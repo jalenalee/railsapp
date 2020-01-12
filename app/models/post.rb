@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
-  belongs_to :categories 
-  belongs_to :users 
-  has_many :tags through :taggings 
-
+  belongs_to :category
+  belongs_to :user
+  has_many :taggings
+  has_many :tags, through: :taggings
 end

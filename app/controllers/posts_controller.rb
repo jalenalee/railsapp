@@ -61,6 +61,14 @@ class PostsController < ApplicationController
     end
   end
 
+  # Instance variable => @ meaning it can be used inside the action method and the action view
+  # e.g. @posts = Post.all in def stats, means within that method and in stats.html.erb as long as
+  # under the posts directory because the controller is posts.
+  # Local variable => means only within the method.
+  def stats
+    @posts = Post.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
