@@ -67,6 +67,10 @@ class PostsController < ApplicationController
   # Local variable => means only within the method.
   def stats
     @posts = Post.all
+  
+# The user with the most number of authored posts and the associated count
+# The top 5 most used tags 
+# The title of the longest blog post by character count
   end
 
   private
