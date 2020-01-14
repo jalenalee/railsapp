@@ -15,5 +15,33 @@
   <%= @post.date %>
 </p>
 
+<p>
+  <strong>Author:</strong>
+  <%= @author_first_name %> 
+  <%= @author_last_name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @category %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <% @comments.each do |comment| %>
+    <%= comment.user.first_name %> 
+    <%= comment.user.last_name %> 
+    <%= comment.content %>
+    <%= comment.created_at %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <% @tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

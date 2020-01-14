@@ -10,6 +10,14 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @title = @post.title
+    @author_first_name = @post.user.first_name
+    @author_last_name = @post.user.last_name
+    @date = @post.date
+    @content = @post.content
+    @category = @post.category.name
+    @tags = @post.tags
+    @comments = @post.comments
   end
 
   # GET /posts/new
@@ -66,11 +74,25 @@ class PostsController < ApplicationController
   # under the posts directory because the controller is posts.
   # Local variable => means only within the method.
   def stats
-    @posts = Post.all
-  
-# The user with the most number of authored posts and the associated count
+
 # The top 5 most used tags 
+# Create a table 
+  @top_tag = Tagging.group(:tag_id).order('COUNT(*) DESC').limit(5)
+  # Select (this grabs all the children inside the top tag table)
+  # single quotes mean injecting SQL 
+  # @tags = Tag.joins(:taggings).group('taggings.tag_id').select('top_tag.*,COUNT(*) as tagging').order('tagging DESC').limit(5)
+
+
+# The user with the most number of authored posts and the associated count
+  @posts = Post.all
+  @number_of_posts = Post.group(:user_id).select('*, COUNT(*) AS counter').order('counter DESC').first.counter 
+  # You want the first one of the table count 
+  @user_with_most_posts = Post.group(:user_id).select('*, COUNT(*) AS counter').order('counter DESC').first.user.first_name 
+  # @most_post = Post.group(:user_id).order(‘COUNT(*) DESC’).count()
+
 # The title of the longest blog post by character count
+  @longest_blog_post_by_character_count = Post.order('length(content) desc').first.title 
+
   end
 
   private

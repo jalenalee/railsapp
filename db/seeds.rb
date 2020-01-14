@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Delete databse so you can start from the top of the table 
+User.delete_all
+Category.delete_all
+Tag.delete_all
+Post.delete_all
+Comment.delete_all
+
 # User Creations 
 @jalena = User.create(first_name: 'Jalena', last_name: 'Lee', email: 'jalena@example.com')
 @johnny_appleseed = User.create(first_name: 'Johnny', last_name: 'Appleseed', email: 'johnnyappleseed@example.com')
@@ -24,15 +31,22 @@
 @bubbletea = Tag.create(name: 'Bubble Tea')
 @shopify = Tag.create(name: 'Shopify')
 @carleton = Tag.create(name: 'Carleton')
-@fun_in_Ottawa = Category.create(name: 'Fun Things To Do In Ottawa')
+@fun_in_Ottawa = Tag.create(name: 'Fun Things To Do In Ottawa')
+@braingains = Tag.create(name: 'Big Brain Gains')
 
 # Post Creations 
 # DateTime.new(YYYY, MM, DD, hh, mm, ss)
-@comp1405post = Post.create(title: 'COMP1406', content: 'This course honestly turned out the best!', date: DateTime.new(2020, 1, 10, 23, 46, 0), user_id: @jalena.id, category_id: @school.id, tag_id: Carleton, tag_id:)
-@another_post = Post.create(title: 'Sample', content: 'This is some sample post.Yay! We love rails', date: DateTime.new(2020, 1, 12, 14, 12, 2), user_id: @johnny_appleseed, category_id: @fun)
+@comp1405post = Post.create(title: 'COMP1406', content: 'This course honestly turned out the best!', date: DateTime.new(2020, 1, 10, 23, 46, 0), user_id: @jalena.id, category_id: @school.id)
+@another_post = Post.create(title: 'Sample', content: 'This is some sample post.Yay! We love rails', date: DateTime.new(2020, 1, 12, 14, 12, 2), user_id: @johnny_appleseed.id, category_id: @life.id)
+@chad_post = Post.create(title: 'Chad Bro in Tech', content: 'This is your guide to success yay', date: DateTime.new(2020, 1, 12, 14, 12, 2), user_id: @chad.id, category_id: @school.id) 
 
 # Comment Creations 
-@comment_rand = Comment.create(date: DateTime.now(), content: 'This is awesome! Keep it up!', user_id: @jalena, post_id: @post)
+@comment_rand = Comment.create([{date: DateTime.now(), content: 'This is awesome! Keep it up!', user_id: @jalena, post_id: @comp1405post}, {date: DateTime.now(), content: 'This is also awesome! Keep it up!', user_id: @johnny_appleseed, post_id: @another_post}, {date: DateTime.now(), content: 'Mannsplaining blah blah blah... Let me know how I can be helpful.', user_id: @chad.id, post_id: @another_post.id}])
+
+# Tag Creations 
+@comp1405post.tags << @carleton << @coding << @rails << @shopify
+@another_post.tags << @bubbletea << @foods << @fun_in_Ottawa << @shopify
+@chad_post.tags << @shopify << @coding << @braingains
 
 # @jalena = User.create(first_name: ‘Jalena’, last_name: ‘Lee’, email: 'jalena@example.com’)
 # @learning = Category.create(name: ‘Learning’)
