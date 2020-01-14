@@ -3,10 +3,10 @@
 <p>
   <strong>User with Most Posts:</strong>
   <%= @user_with_most_posts %>
-  (<%= @number_of_posts %>)
+  (<%=@number_of_posts%>)
   <br><br>
   <strong>Top 5 Tags:</strong>
-  <% @top_tag.each do |tag| %>
+  <% @tags.each do |tag| %>
     <%= tag.name %>,
   <% end %>
   <br><br>
