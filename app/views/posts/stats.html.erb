@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<h1>BLOG STATUS</h1>
+<h1>Stats</h1>
 <p>
-  <strong>User with the most posts</strong>
+  <strong>User with Most Posts:</strong>
   <%= @user_with_most_posts %>
   (<%= @number_of_posts %>)
-</p>
-<br><br>
-<%= link_to 'New Post', new_post_path %>
-
-<%# <%=@post.user.first_name %> %>
+  <br><br>
+  <strong>Top 5 Tags:</strong>
+  <% @top_tag.each do |tag| %>
+    <%= tag.name %>,
+  <% end %>
+  <br><br>
+  <strong>Longest blog post:</strong>
+  <%= @longest_blog_post_by_character_count %>
+</p
