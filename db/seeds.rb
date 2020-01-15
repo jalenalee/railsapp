@@ -41,7 +41,7 @@ Comment.delete_all
 @chad_post = Post.create(title: 'Chad Bro in Tech', content: 'This is your guide to success yay', date: DateTime.new(2020, 1, 12, 14, 12, 2), user_id: @jalena.id, category_id: @school.id) 
 
 # Comment Creations 
-@comment_rand = Comment.create([{date: DateTime.now(), content: 'This is awesome! Keep it up!', user_id: @jalena, post_id: @comp1405post}, {date: DateTime.now(), content: 'This is also awesome! Keep it up!', user_id: @johnny_appleseed, post_id: @another_post}, {date: DateTime.now(), content: 'Mannsplaining blah blah blah... Let me know how I can be helpful.', user_id: @chad.id, post_id: @another_post.id}])
+@comment_rand = Comment.create([{date: DateTime.now(), content: 'This is awesome! Keep it up!', user_id: @jalena.id, post_id: @comp1405post.id}, {date: DateTime.now(), content: 'This is also awesome! Keep it up!', user_id: @johnny_appleseed.id, post_id: @another_post.id}, {date: DateTime.now(), content: 'Mannsplaining blah blah blah... Let me know how I can be helpful.', user_id: @chad.id, post_id: @another_post.id}])
 
 # Tag Creations 
 @comp1405post.tags << @carleton << @coding << @rails << @shopify
