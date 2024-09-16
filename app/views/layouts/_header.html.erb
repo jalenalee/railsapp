@@ -1,0 +1,11 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Jalena's Blog", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "About Us", users_about_path %></li>
+        <%= link_to 'New Post', new_post_path %>
+      </ul>
+    </nav>
+  </div>
+</header>
